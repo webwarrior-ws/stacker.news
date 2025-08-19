@@ -100,6 +100,8 @@ export async function perform (args, context) {
     }
   }
 
+  data.userId = USER_ID.anon;
+
   const itemData = {
     parentId: parentId ? parseInt(parentId) : null,
     ...data,
