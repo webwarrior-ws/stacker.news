@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import AccordianItem from './accordian-item'
+import { Input } from '@/components/form'
 import { useMe } from './me'
 import { useRouter } from 'next/router'
 import { DiscussionForm } from './discussion-form'
@@ -152,7 +153,12 @@ export function PostForm ({ type, sub, children }) {
       baseLineItems={sub ? postCommentBaseLineItems({ baseCost: sub.baseCost, me: !!me }) : undefined}
       useRemoteLineItems={postCommentUseRemoteLineItems()}
     >
-      <FormType sub={sub}>{children}</FormType>
+      <FormType sub={sub}>
+        {children}
+        <label>
+          Post anonymously<Input type="checkbox" name="postAnonymously" />
+        </label>
+      </FormType>
     </FeeButtonProvider>
   )
 }

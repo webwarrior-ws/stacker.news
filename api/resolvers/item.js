@@ -1522,6 +1522,8 @@ export const createItem = async (parent, { forward, ...item }, { me, models, lnd
   item.subName = item.sub
   delete item.sub
 
+  console.log("item(createItem): %s", JSON.stringify(item))
+
   item.userId = me ? Number(me.id) : USER_ID.anon
 
   item.forwardUsers = await getForwardUsers(models, forward)

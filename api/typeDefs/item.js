@@ -49,6 +49,7 @@ export default gql`
       hash: String, hmac: String): ItemPaidAction!
     upsertDiscussion(
       id: ID, sub: String, title: String!, text: String, boost: Int, forward: [ItemForwardInput],
+      postAnonymously: Boolean,
       hash: String, hmac: String): ItemPaidAction!
     upsertBounty(
       id: ID, sub: String, title: String!, text: String, bounty: Int, boost: Int, forward: [ItemForwardInput],

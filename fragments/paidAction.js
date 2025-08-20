@@ -144,8 +144,9 @@ export const ACT_MUTATION = gql`
 export const UPSERT_DISCUSSION = gql`
   ${PAID_ACTION}
   mutation upsertDiscussion($sub: String, $id: ID, $title: String!, $text: String,
-    $boost: Int, $forward: [ItemForwardInput], ${HASH_HMAC_INPUT_1}) {
+    $boost: Int, $postAnonymously: Boolean, $forward: [ItemForwardInput], ${HASH_HMAC_INPUT_1}) {
     upsertDiscussion(sub: $sub, id: $id, title: $title, text: $text, boost: $boost,
+      postAnonymously: $postAnonymously,
       forward: $forward, ${HASH_HMAC_INPUT_2}) {
       result {
         id

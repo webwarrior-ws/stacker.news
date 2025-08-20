@@ -64,6 +64,8 @@ export async function perform (args, context) {
 
   await throwOnExpiredUploads(uploadIds, { tx })
 
+  console.log("data(itemCreate.js): %s", JSON.stringify(data))
+
   let invoiceData = {}
   if (invoiceId) {
     invoiceData = { invoiceId, invoiceActionState: 'PENDING' }
@@ -100,7 +102,10 @@ export async function perform (args, context) {
     }
   }
 
-  data.userId = USER_ID.anon;
+  console.log("data: %s", JSON.stringify(data))
+  if (data.postAnonymously) {
+    data.userId = USER_ID.anon
+  }
 
   const itemData = {
     parentId: parentId ? parseInt(parentId) : null,

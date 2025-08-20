@@ -48,6 +48,8 @@ export default function useItemSubmit (mutation,
           values.hmac = hmac
         }
       }
+      
+      console.log("values: %s", JSON.stringify(values))
 
       const { data, error, payError } = await upsertItem({
         variables: {
