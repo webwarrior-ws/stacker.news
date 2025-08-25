@@ -173,6 +173,7 @@ export default gql`
     apiKey: Boolean
     invoice: Invoice
     cost: Int!
+    postAnonymously: Boolean
   }
 
   input ItemForwardInput {

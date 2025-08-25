@@ -102,11 +102,6 @@ export async function perform (args, context) {
     }
   }
 
-  console.log("data: %s", JSON.stringify(data))
-  if (data.postAnonymously) {
-    data.userId = USER_ID.anon
-  }
-
   const itemData = {
     parentId: parentId ? parseInt(parentId) : null,
     ...data,
