@@ -16,6 +16,7 @@ import FeeButton, { FeeButtonProvider, postCommentBaseLineItems, postCommentUseR
 import Delete from './delete'
 import CancelButton from './cancel-button'
 import { TerritoryInfo } from './territory-header'
+import { USER_ID } from '@/lib/constants'
 
 export function PostForm ({ type, sub, children }) {
   const { me } = useMe()
@@ -148,6 +149,9 @@ export function PostForm ({ type, sub, children }) {
     FormType = BountyForm
   }
 
+  const addAnonymousPostingOption =
+    me && me.id != USER_ID.anon && type != 'bounty' && type != 'job'
+
   return (
     <FeeButtonProvider
       baseLineItems={sub ? postCommentBaseLineItems({ baseCost: sub.baseCost, me: !!me }) : undefined}
@@ -155,7 +159,7 @@ export function PostForm ({ type, sub, children }) {
     >
       <FormType sub={sub}>
         {children}
-      <Checkbox name="postAnonymously" label="Post anonymously" />
+        {addAnonymousPostingOption && <Checkbox name="postAnonymously" label="Post anonymously" />}
       </FormType>
     </FeeButtonProvider>
   )
